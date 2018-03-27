@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SpurRoguelike.BotLoader" Collapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BotLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.BotLoaderException" Collapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BotLoaderException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.EntryPoint" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAgAAAAAAAAAAAQABIAAAAA=</HashCode>
+      <FileName>EntryPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.ConsoleEventReporter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAgAAAAAAQBACAAICABgAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ConsoleGUI\ConsoleEventReporter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.ConsoleGui" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIgCAQCAAACEAAAAiIAyAAAEEBAAAIAAAgAAQBBA=</HashCode>
+      <FileName>ConsoleGUI\ConsoleGui.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.ConsolePlayerController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\ConsolePlayerController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.ConsoleRenderer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAEAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\ConsoleRenderer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.MouseDriver.ConsoleKeyConverter" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\MouseDriver\ConsoleKeyConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.MouseDriver.ConsoleMouseDriver" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAIIAAAAAAABAAAAAAAkgAAABABA=</HashCode>
+      <FileName>ConsoleGUI\MouseDriver\ConsoleMouseDriver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.CenteredPanel" Collapsed="true">
+    <Position X="13.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\Panels\CenteredPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.HelpPanel" Collapsed="true">
+    <Position X="15" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ConsoleGUI\Panels\HelpPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.InfoPanel" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAEAACAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>ConsoleGUI\Panels\InfoPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.LevelViewportPanel" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAQAAAAAAAEAEAAAEAAgAAAAEAEA=</HashCode>
+      <FileName>ConsoleGUI\Panels\LevelViewportPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.MessagePanel" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA=</HashCode>
+      <FileName>ConsoleGUI\Panels\MessagePanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.MessagesPanel" Collapsed="true">
+    <Position X="8.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAEA=</HashCode>
+      <FileName>ConsoleGUI\Panels\MessagesPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.Panel" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAIAAAAAABBAACAAAAAAAAAAAgAAAAAAAAEA=</HashCode>
+      <FileName>ConsoleGUI\Panels\Panel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.Panels.StatsPanel" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ConsoleGUI\Panels\StatsPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.TextScreen.CharAttributeConverter" Collapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\TextScreen\CharAttributeConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.ConsoleGUI.TextScreen.TextScreen" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABCBAAAAQAAEAQAAEAAAAAACABAABAAAAFgAAg=</HashCode>
+      <FileName>ConsoleGUI\TextScreen\TextScreen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpurRoguelike.Content.ArenaFighter">
+    <Position X="20.75" Y="26.5" Width="8.25" />
+    <NestedTypes>
+      <Class Name="SpurRoguelike.Content.ArenaFighter.StateIdle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\ArenaFighter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="SpurRoguelike.Content.ArenaFighter.StateSeeEnemy" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\ArenaFighter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="SpurRoguelike.Content.ArenaFighter.StateSeeObjective" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\ArenaFighter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAkIAAAAAAAAAAAAAAABAIAAAAAEAAAIgAAAQAI=</HashCode>
+      <FileName>Content\ArenaFighter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Content.Dimwit">
+    <Position X="14" Y="29.75" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAA=</HashCode>
+      <FileName>Content\Dimwit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Content.OpenExitTrigger" Collapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Content\OpenExitTrigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Content.Reptiloid">
+    <Position X="6.75" Y="26.5" Width="6" />
+    <NestedTypes>
+      <Class Name="SpurRoguelike.Content.Reptiloid.StateIdle" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\Reptiloid.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="SpurRoguelike.Content.Reptiloid.StateAttacking" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\Reptiloid.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="SpurRoguelike.Content.Reptiloid.StateCowering" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\Reptiloid.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="SpurRoguelike.Content.Reptiloid.StateFear" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Content\Reptiloid.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAIAAAAAEAAAAAAAAQAA=</HashCode>
+      <FileName>Content\Reptiloid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Content.State&lt;T&gt;" Collapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Content\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.ArenaGenerator" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Generators\ArenaGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.ItemClass" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAQAABAAAAAAAAAAA=</HashCode>
+      <FileName>Generators\ItemClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.ItemClassesGenerator" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAIAAAAAAAAAAAAAAQAAEAAAAA=</HashCode>
+      <FileName>Generators\ItemClassesGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.ItemClassOptions" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAAAA=</HashCode>
+      <FileName>Generators\ItemClassOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.LevelGenerationSettings" Collapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Generators\LevelGenerationSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.LevelGenerator" Collapsed="true">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAFgARAACAAAAJIAAAAAAAEAAAAA=</HashCode>
+      <FileName>Generators\LevelGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.MonsterClass" Collapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Generators\MonsterClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.MonsterClassesGenerator" Collapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAIAAAAAAIAAAAAAAAAAAAAAQAAEAAAAA=</HashCode>
+      <FileName>Generators\MonsterClassesGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.MonsterClassOptions" Collapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAIAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Generators\MonsterClassOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Generators.NameGenerator" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAwAAAAAAAAAAAAgAQAAEEAAAA=</HashCode>
+      <FileName>Generators\NameGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpurRoguelike.Core.Entities.Monster">
+    <Position X="14" Y="27.25" Width="5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SpurRoguelike.Core.Entities.Pawn">
+    <Position X="14" Y="21.25" Width="5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SpurRoguelike.Core.Entities.Entity">
+    <Position X="14.25" Y="17.25" Width="4.5" />
+    <TypeIdentifier />
+  </Class>
+  <Struct Name="SpurRoguelike.ConsoleGUI.ConsoleCharacter" Collapsed="true">
+    <Position X="19.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>ConsoleGUI\ConsoleCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.ConsoleMessage" Collapsed="true">
+    <Position X="21" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAiAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\ConsoleMessage.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.ScreenZone" Collapsed="true">
+    <Position X="21" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAIAAAACAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\ScreenZone.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.WinApi.CharInfo" Collapsed="true">
+    <Position X="17.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\CharInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.WinApi.Coord" Collapsed="true">
+    <Position X="22.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\Coord.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.WinApi.InputRecord" Collapsed="true">
+    <Position X="24.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\InputRecord.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.WinApi.KeyEvent" Collapsed="true">
+    <Position X="17.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAEAAAAAAEAMAAAAQAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\KeyEvent.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.WinApi.MouseEvent" Collapsed="true">
+    <Position X="19.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIEAAAAAAAAAAAAAEAAAAAAAAACAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\MouseEvent.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SpurRoguelike.ConsoleGUI.WinApi.SmallRect" Collapsed="true">
+    <Position X="22.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\SmallRect.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="SpurRoguelike.ConsoleGUI.ITextScreen" Collapsed="true">
+    <Position X="19.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAACAAAABAAAAFAAAg=</HashCode>
+      <FileName>ConsoleGUI\ITextScreen.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SpurRoguelike.ConsoleGUI.MouseDriver.IClickHandler" Collapsed="true">
+    <Position X="17.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\MouseDriver\IClickHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SpurRoguelike.ConsoleGUI.WinApi.CharAttributes" Collapsed="true">
+    <Position X="17.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAEAAAAAgAAAAAAAMAAAAgAIAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\CharAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpurRoguelike.ConsoleGUI.WinApi.ControlKeyState" Collapsed="true">
+    <Position X="19.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAIAAAAAAAAEEAAAAACAAAEgAAAAAgAABAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\ControlKeyState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpurRoguelike.ConsoleGUI.WinApi.EventType" Collapsed="true">
+    <Position X="21" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\EventType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpurRoguelike.ConsoleGUI.WinApi.MouseButtonState" Collapsed="true">
+    <Position X="22.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAgAAAQAAAAEBAAAAAAAAAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\MouseButtonState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpurRoguelike.ConsoleGUI.WinApi.MouseEventFlags" Collapsed="true">
+    <Position X="24.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAEQAAA=</HashCode>
+      <FileName>ConsoleGUI\WinApi\MouseEventFlags.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
