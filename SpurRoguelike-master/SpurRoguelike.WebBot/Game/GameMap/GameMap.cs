@@ -12,12 +12,15 @@ namespace SpurRoguelike.WebPlayerBot.Game {
         private readonly MapCellType[,] cells;
         private VisibleAreaInfo areaInfo;
 
-        private readonly MapHealthPacksUpdater healthPacksUpdater = new MapHealthPacksUpdater();
-        private readonly MapItemsUpdater itemsUpdater = new MapItemsUpdater();
-        private readonly MapMonsterUpdater monsterUpdater = new MapMonsterUpdater();
-        private readonly MapWallsUpdater wallsUpdater = new MapWallsUpdater();
-        private readonly MapTrapsUpdater trapsUpdater = new MapTrapsUpdater();
         private readonly List<Location> detectedLocationsOfExits = new List<Location>();
+
+        public IEnumerable<PawnViewInfo> DetectedMonsters { get; } = new List<PawnViewInfo>();
+        public IEnumerable<ItemViewInfo> DetectedItems { get; } = new List<ItemViewInfo>();
+        public IEnumerable<HealthPackViewInfo> DetectedHealthPacks { get; } = new List<HealthPackViewInfo>();
+        public IEnumerable<Location> DetectedTraps { get; } = new List<Location>();
+        public IEnumerable<Location> DetectedWalls { get; } = new List<Location>();
+        public IEnumerable<Location> DetectedLocationsOfExits { get; } = new List<Location>();
+        public VisibleAreaInfo AreaInfo => areaInfo;
 
         public Int32 MaxPlayerHealth { get; private set; }
 
@@ -32,8 +35,8 @@ namespace SpurRoguelike.WebPlayerBot.Game {
             this.MaxPlayerHealth = maxPlayerHealth;
             cells = new MapCellType[width, height];
         }
-        public GameMap(FieldView fieldView, PawnViewInfo player, Int32 maxPlayerHealth)
-            : this(fieldView.Width, fieldView.Height, fieldView.VisibilityWidth, fieldView.VisibilityHeight, player, maxPlayerHealth) {
+        public GameMap(LevelDataViewInfo levelData, PawnViewInfo player, Int32 maxPlayerHealth)
+            : this(levelData.Field.Width, levelData.Field.Height, levelData.Field.VisibilityWidth, levelData.Field.VisibilityHeight, player, maxPlayerHealth) {
         }
 
         public MapCellType this[Location location] {
@@ -49,6 +52,7 @@ namespace SpurRoguelike.WebPlayerBot.Game {
             location.X >= 0 && location.X < areaInfo.MapWidth && location.Y >= 0 && location.Y < areaInfo.MapHeight;
 
         public void UpdateState(LevelViewInfo levelViewInfo) {
+            AreaInfo.Player = levelViewInfo.LevelData.Player;
             ExploreNewTerrain(levelViewInfo);
 
             //monsterUpdater.Update(this, levelViewInfo.Monsters);
@@ -70,41 +74,11 @@ namespace SpurRoguelike.WebPlayerBot.Game {
                 this[location] = func(location);
             }
         }
-        private void SetMapCellValuesByColumn(Location topBorder, Location bottomBorder, Func<Location, MapCellType> func) {
-            for(Int32 y = topBorder.Y; y <= bottomBorder.Y; y++) {
-                var location = new Location { X = topBorder.X, Y = y };
-                this[location] = func(location);
-            }
-        }
         private void SetMapCellValuesByRectangle(Location leftTopCorner, Location rightBottomCorner, Func<Location, MapCellType> func) {
             for(Int32 y = leftTopCorner.Y; y <= rightBottomCorner.Y; y++)
                 SetMapCellValuesByRow(new Location { X = leftTopCorner.X, Y = y }, new Location { X = rightBottomCorner.X, Y = y }, func);
         }
 
-        public IEnumerable<Tuple<Location, MapCellType>> GetElementsByRow(Location leftBorder, Location rightBorder) {
-            if(leftBorder.Y != rightBorder.Y || leftBorder.Y >= areaInfo.MapHeight || leftBorder.Y < 0)
-                yield break;
-            if(leftBorder.X > rightBorder.X || leftBorder.X >= areaInfo.MapWidth || rightBorder.X < 0)
-                yield break;
-            var realLeftBorder = leftBorder.X < 0 ? new Location { X = 0, Y = leftBorder.Y } : leftBorder;
-            var realRightBorder = rightBorder.X >= areaInfo.MapWidth ? new Location { X = areaInfo.MapWidth - 1, Y = rightBorder.Y } : rightBorder;
-            for(Int32 x = realLeftBorder.X; x <= realRightBorder.X; x++) {
-                var location = new Location { X = x, Y = realLeftBorder.Y };
-                yield return Tuple.Create(location, this[location]);
-            }
-        }
-        public IEnumerable<Tuple<Location, MapCellType>> GetElementsByColumn(Location topBorder, Location bottomBorder) {
-            if(topBorder.X != bottomBorder.X || topBorder.X >= areaInfo.MapWidth || topBorder.X < 0)
-                yield break;
-            if(topBorder.Y > bottomBorder.Y || topBorder.Y < 0 || bottomBorder.Y >= areaInfo.MapHeight)
-                yield break;
-            var realTopBorder = topBorder.Y < 0 ? new Location { X = topBorder.X, Y = 0 } : topBorder;
-            var realBottomBorder = bottomBorder.Y >= areaInfo.MapHeight ? new Location { X = bottomBorder.X, Y = areaInfo.MapHeight - 1 } : bottomBorder;
-            for(Int32 y = realTopBorder.Y; y <= realBottomBorder.Y; y++) {
-                var location = new Location { X = realTopBorder.X, Y = y };
-                yield return Tuple.Create(location, this[location]);
-            }
-        }
         public IEnumerable<Tuple<Location, MapCellType>> GetElementsByRectangle(Location leftTopCorner, Location rightBottomCorner) {
             if(leftTopCorner.X >= areaInfo.MapWidth || leftTopCorner.Y >= areaInfo.MapHeight)
                 yield break;
@@ -135,115 +109,8 @@ namespace SpurRoguelike.WebPlayerBot.Game {
             return levelViewInfo.Field[location].ToMapCellType();
         }
 
-        public IEnumerable<PawnViewInfo> DetectedMonsters => monsterUpdater.DetectedElements;
-        public IEnumerable<ItemViewInfo> DetectedItems => itemsUpdater.DetectedElements;
-        public IEnumerable<HealthPackViewInfo> DetectedHealthPacks => healthPacksUpdater.DetectedElements;
-        public IEnumerable<Location> DetectedTraps => trapsUpdater.ElementsLocations;
-        public IEnumerable<Location> DetectedWalls => wallsUpdater.ElementsLocations;
-        public IEnumerable<Location> DetectedLocationsOfExits => detectedLocationsOfExits;
-        public VisibleAreaInfo AreaInfo => areaInfo;
-
-
-        private abstract class BaseMapElementUpdater<T> {
-            protected List<Location> elementsLocations = new List<Location>();
-            public IEnumerable<Location> ElementsLocations => elementsLocations;
-
-            protected BaseMapElementUpdater() { }
-
-            public abstract void Update(GameMap gameMap, IEnumerable<T> visibleElements);
-            protected abstract MapCellType ToMapCellType();
-        }
-        private abstract class MapElementUpdaterByLocation : BaseMapElementUpdater<Location> {
-            protected MapElementUpdaterByLocation() : base() { }
-
-            public override void Update(GameMap gameMap, IEnumerable<Location> visibleElements) {
-                foreach(var location in elementsLocations.Where(location => gameMap.areaInfo.InTheVisibleArea(location)).ToList()) {
-                    elementsLocations.Remove(location);
-                    gameMap[location] = MapCellType.None;
-                }
-                foreach(var location in visibleElements) {
-                    elementsLocations.Add(location);
-                    gameMap[location] = ToMapCellType();
-                }
-            }
-        }
-        private abstract class MapElementUpdater<T> : BaseMapElementUpdater<T> {
-            protected readonly List<T> detectedElements = new List<T>();
-            public IEnumerable<T> DetectedElements => detectedElements;
-
-            protected MapElementUpdater() : base() { }
-
-            public override void Update(GameMap gameMap, IEnumerable<T> visibleElements) {
-                RemoveFromMap(gameMap, elementsLocations);
-
-                RemoveDestroyedElements(gameMap);
-
-                AddSetElements(visibleElements);
-                elementsLocations = detectedElements.Select(el => ToLocation(el)).ToList();
-                SetCellTypeByLocations(gameMap, elementsLocations, ToMapCellType());
-            }
-
-            protected abstract Location ToLocation(T element);
-            protected abstract void RemoveDestroyedElements(GameMap gameMap);
-
-            private void AddSetElements(IEnumerable<T> sender) {
-                foreach(var element in sender)
-                    if(!detectedElements.Contains(element))
-                        detectedElements.Add(element);
-            }
-            private void RemoveFromMap(GameMap gameMap, IEnumerable<Location> locations) {
-                if(locations != null)
-                    SetCellTypeByLocations(gameMap, locations, MapCellType.None);
-            }
-            private void SetCellTypeByLocations(GameMap gameMap, IEnumerable<Location> locations, MapCellType cellType) {
-                foreach(var location in locations)
-                    gameMap[location] = cellType;
-            }
-        }
-
-        private class MapWallsUpdater : MapElementUpdaterByLocation {
-            public MapWallsUpdater() : base() { }
-
-            protected override MapCellType ToMapCellType() => MapCellType.Wall;
-        }
-        private class MapTrapsUpdater : MapElementUpdaterByLocation {
-            public MapTrapsUpdater() : base() { }
-
-            protected override MapCellType ToMapCellType() => MapCellType.Trap;
-        }
-        private class MapItemsUpdater : MapElementUpdater<ItemViewInfo> {
-            public MapItemsUpdater() : base() { }
-
-            protected override void RemoveDestroyedElements(GameMap gameMap) {
-                elementsLocations?.RemoveAll(location => gameMap.areaInfo.InTheVisibleArea(location));
-                detectedElements.RemoveAll(el => gameMap.areaInfo.InTheVisibleArea(el.Location));
-            }
-            protected override Location ToLocation(ItemViewInfo element) => element.Location;
-            protected override MapCellType ToMapCellType() => MapCellType.Item;
-        }
-        private class MapHealthPacksUpdater : MapElementUpdater<HealthPackViewInfo> {
-            public MapHealthPacksUpdater() : base() { }
-
-            protected override void RemoveDestroyedElements(GameMap gameMap) {
-                elementsLocations?.RemoveAll(location => gameMap.areaInfo.InTheVisibleArea(location));
-                detectedElements.RemoveAll(el => gameMap.areaInfo.InTheVisibleArea(el.Location));
-            }
-            protected override Location ToLocation(HealthPackViewInfo element) => element.Location;
-            protected override MapCellType ToMapCellType() => MapCellType.HealthPack;
-        }
-        private class MapMonsterUpdater : MapElementUpdater<PawnViewInfo> {
-            public MapMonsterUpdater() : base() { }
-
-            protected override void RemoveDestroyedElements(GameMap gameMap) => detectedElements.RemoveAll(el => el == null);
-            protected override Location ToLocation(PawnViewInfo element) => element.Location;
-            protected override MapCellType ToMapCellType() => MapCellType.Monster;
-        }
-
-
-
-
-        public struct VisibleAreaInfo {
-            public PawnViewInfo Player { get; internal set; }
+        public class VisibleAreaInfo {
+            public PawnViewInfo Player { get; set; }
             public Int32 VisibilityWidth { get; internal set; }
             public Int32 VisibilityHeight { get; internal set; }
             public Int32 MapWidth { get; internal set; }
