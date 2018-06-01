@@ -9,23 +9,20 @@ namespace SpurRoguelike.WebBot {
         private TargetAnalizer targetAnalizer;
         private Int32 maxPlayerHealth = 0;
 
-        public TurnType MakeTurn(LevelViewInfo levelView) {
+        public TurnType MakeTurn(LevelViewInfo levelViewInfo) {
             if (gameMap == null) {
-                maxPlayerHealth = Math.Max(maxPlayerHealth, levelView.LevelData.Player.Health);
-                gameMap = new GameMap(levelView.Field, levelView.Player, maxPlayerHealth);
+                maxPlayerHealth = Math.Max(maxPlayerHealth, levelViewInfo.LevelData.Player.Health);
+                gameMap = new GameMap(levelViewInfo.Field, levelViewInfo.LevelData.Player, maxPlayerHealth);
                 targetAnalizer = new TargetAnalizer(gameMap);
             }
-            gameMap.UpdateState(levelView);
+            gameMap.UpdateState(levelViewInfo);
             var turnInfo = targetAnalizer.GetTurn();
             if (turnInfo == null || turnInfo.Turn == null)
-                return DefaulTurn;
+                return default(TurnType);
             if (IsLastStep(turnInfo.TurnType))
                 gameMap = null;
-            return turnInfo.Turn;
-            return default(TurnType);
+            return turnInfo.TurnType;
         }
-
-        private Turn DefaulTurn => Turn.None;
 
         private Boolean IsLastStep(TurnType turnType) {
             var playerLoc = gameMap.AreaInfo.Player.Location;

@@ -4,6 +4,7 @@ using System.Linq;
 using SpurRoguelike.Core.Primitives;
 using SpurRoguelike.Core.Views;
 using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebBot.Infractructure;
 
 namespace SpurRoguelike.PlayerBot.Game {
     internal sealed class GameMap {
@@ -22,7 +23,7 @@ namespace SpurRoguelike.PlayerBot.Game {
 
         public Int32 MaxPlayerHealth { get; private set; }
 
-        public GameMap(Int32 width, Int32 height, Int32 visibilityWidth, Int32 visibilityHeight, PawnView player, Int32 maxPlayerHealth) {
+        public GameMap(Int32 width, Int32 height, Int32 visibilityWidth, Int32 visibilityHeight, PlayerViewInfo player, Int32 maxPlayerHealth) {
             areaInfo = new VisibleAreaInfo() {
                 Player = player,
                 MapWidth = width,
@@ -33,7 +34,7 @@ namespace SpurRoguelike.PlayerBot.Game {
             this.MaxPlayerHealth = maxPlayerHealth;
             cells = new MapCellType[width, height];
         }
-        public GameMap(FieldView fieldView, PawnView player, Int32 maxPlayerHealth)
+        public GameMap(FieldView fieldView, PlayerViewInfo player, Int32 maxPlayerHealth)
             : this(fieldView.Width, fieldView.Height, fieldView.VisibilityWidth, fieldView.VisibilityHeight, player, maxPlayerHealth) {
         }
 
@@ -49,20 +50,20 @@ namespace SpurRoguelike.PlayerBot.Game {
         public Boolean Contains(Location location) =>
             location.X >= 0 && location.X < areaInfo.MapWidth && location.Y >= 0 && location.Y < areaInfo.MapHeight;
 
-        public void UpdateState(LevelView levelView) {
-            ExploreNewTerrain(levelView);
+        public void UpdateState(LevelViewInfo levelViewInfo) {
+            ExploreNewTerrain(levelViewInfo);
 
-            monsterUpdater.Update(this, levelView.Monsters);
-            itemsUpdater.Update(this, levelView.Items);
-            healthPacksUpdater.Update(this, levelView.HealthPacks);
-            wallsUpdater.Update(this, levelView.Field.GetCellsOfType(CellType.Wall));
-            trapsUpdater.Update(this, levelView.Field.GetCellsOfType(CellType.Trap));
+            //monsterUpdater.Update(this, levelViewInfo.Monsters);
+            //itemsUpdater.Update(this, levelViewInfo.Items);
+            //healthPacksUpdater.Update(this, levelViewInfo.HealthPacks);
+            //wallsUpdater.Update(this, levelViewInfo.Field.GetCellsOfType(CellType.Wall));
+            //trapsUpdater.Update(this, levelViewInfo.Field.GetCellsOfType(CellType.Trap));
         }
 
-        private void ExploreNewTerrain(LevelView levelView) {
+        private void ExploreNewTerrain(LevelViewInfo levelViewInfo) {
             var leftTopCorner = areaInfo.GetLeftTopCorner();
             var rightBottomCorner = areaInfo.GetRightBottomCorner();
-            SetMapCellValuesByRectangle(leftTopCorner, rightBottomCorner, (location) => SetMapCellType(location, levelView));
+            SetMapCellValuesByRectangle(leftTopCorner, rightBottomCorner, (location) => SetMapCellType(location, levelViewInfo));
         }
 
         private void SetMapCellValuesByRow(Location leftBorder, Location rightBorder, Func<Location, MapCellType> func) {
@@ -130,10 +131,10 @@ namespace SpurRoguelike.PlayerBot.Game {
                         yield return new Location(x, y);
         }
 
-        private MapCellType SetMapCellType(Location location, LevelView levelView) {
-            if(levelView.Field[location] == CellType.Exit && !detectedLocationsOfExits.Contains(location))
+        private MapCellType SetMapCellType(Location location, LevelViewInfo levelViewInfo) {
+            if(levelViewInfo.Field[location] == CellType.Exit && !detectedLocationsOfExits.Contains(location))
                 detectedLocationsOfExits.Add(location);
-            return levelView.Field[location].ToMapCellType();
+            return levelViewInfo.Field[location].ToMapCellType();
         }
 
         public IEnumerable<PawnView> DetectedMonsters => monsterUpdater.DetectedElements;
@@ -241,7 +242,7 @@ namespace SpurRoguelike.PlayerBot.Game {
         }
 
         public struct VisibleAreaInfo {
-            public PawnView Player { get; internal set; }
+            public PlayerViewInfo Player { get; internal set; }
             public Int32 VisibilityWidth { get; internal set; }
             public Int32 VisibilityHeight { get; internal set; }
             public Int32 MapWidth { get; internal set; }

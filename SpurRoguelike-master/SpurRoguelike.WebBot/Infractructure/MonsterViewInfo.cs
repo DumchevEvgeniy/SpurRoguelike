@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace SpurRoguelike.WebBot.Infractructure {
-    public class Monster {
+    public class MonsterViewInfo {
         public String Name { get; set; }
         public Int32 attack { get; set; }
         public Int32 defence { get; set; }
@@ -10,6 +10,6 @@ namespace SpurRoguelike.WebBot.Infractructure {
         public Int32 health { get; set; }
         public Guid uniqueId { get; set; }
         public Boolean isDestroyed { get; set; }
-        public Location location { get; set; }
+        public LocationViewInfo location { get; set; }
     }
 }
