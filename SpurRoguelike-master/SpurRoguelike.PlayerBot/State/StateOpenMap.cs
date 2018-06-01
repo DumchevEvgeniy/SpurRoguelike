@@ -1,5 +1,5 @@
-﻿using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Targets;
+﻿using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateOpenMap : BaseState<TargetOpenMap> {
     public StateOpenMap(TargetOpenMap target, PlayerGameInfo playerGameInfo)

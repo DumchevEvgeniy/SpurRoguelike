@@ -45,7 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infractructure\AttackDirection.cs" />
+    <Compile Include="Infractructure\CellType.cs" />
     <Compile Include="Infractructure\Field.cs" />
+    <Compile Include="Infractructure\Location.cs" />
+    <Compile Include="Infractructure\Offset.cs" />
+    <Compile Include="Infractructure\PawnViewInfo.cs" />
+    <Compile Include="Infractructure\RandomExtensions.cs" />
+    <Compile Include="Infractructure\StepDirection.cs" />
     <Compile Include="SpurApi\ApiSpurClient.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\GameMapExtensions.cs" />
@@ -67,9 +74,6 @@
     <Compile Include="Infractructure\ItemViewInfo.cs" />
     <Compile Include="Infractructure\LevelDataViewInfo.cs" />
     <Compile Include="Infractructure\LevelViewInfo.cs" />
-    <Compile Include="Infractructure\LocationViewInfo.cs" />
-    <Compile Include="Infractructure\MonsterViewInfo.cs" />
-    <Compile Include="Infractructure\PlayerViewInfo.cs" />
     <Compile Include="WebPlayerBot\IWebPlayerController.cs" />
     <Compile Include="Movement\IMovement.cs" />
     <Compile Include="Movement\Movement.cs" />

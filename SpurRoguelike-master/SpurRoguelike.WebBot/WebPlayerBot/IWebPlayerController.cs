@@ -1,7 +1,7 @@
-﻿using SpurRoguelike.PlayerBot.Game;
-using SpurRoguelike.WebBot.Infractructure;
+﻿using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.WebBot {
+namespace SpurRoguelike.WebPlayerBot {
     public interface IWebPlayerController {
         TurnType MakeTurn(LevelViewInfo levelView);
     }

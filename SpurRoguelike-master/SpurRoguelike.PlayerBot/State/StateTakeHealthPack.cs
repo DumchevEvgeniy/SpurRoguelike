@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
-using SpurRoguelike.PlayerBot.Targets;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateTakeHealthPack : BaseState<TargetTakeHealthPack> {
     public StateTakeHealthPack(TargetTakeHealthPack target, PlayerGameInfo playerGameInfo)

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Extensions {
+namespace SpurRoguelike.WebPlayerBot.Extensions {
     internal static class LocationExtansions {
         public static IEnumerable<Quadrant> GetQuadrants(this Location centerLocation, Int32 offsetWidth, Int32 offsetHeight) {
             var quadrants = new List<Quadrant> {

@@ -1,4 +1,4 @@
-﻿using SpurRoguelike.PlayerBot.Targets;
+﻿using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateMovementToExitOnOpenMap : BaseState<TargetMovementToExitOnOpenMap> {
     public StateMovementToExitOnOpenMap(TargetMovementToExitOnOpenMap target, PlayerGameInfo playerGameInfo)

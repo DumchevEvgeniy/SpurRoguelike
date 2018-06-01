@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SpurRoguelike.Core;
 using SpurRoguelike.Core.Primitives;
 using SpurRoguelike.Core.Views;
@@ -19,8 +20,6 @@ namespace SpurRoguelike.UnfairBot {
             return Turn.Step((StepDirection)levelView.Random.Next(4));
         }
 
-        private static Boolean IsInAttackRange(Location a, Location b) {
-            return a.IsInRange(b, 1);
-        }
+        private static Boolean IsInAttackRange(Location a, Location b) => a.IsInRange(b, 1);
     }
 }

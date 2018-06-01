@@ -2,9 +2,9 @@
 using SpurRoguelike.Core;
 using SpurRoguelike.Core.Primitives;
 using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot {
+namespace SpurRoguelike.WebPlayerBot {
     public sealed class PlayerBot : IPlayerController {
         private GameMap gameMap;
         private TargetAnalizer targetAnalizer;

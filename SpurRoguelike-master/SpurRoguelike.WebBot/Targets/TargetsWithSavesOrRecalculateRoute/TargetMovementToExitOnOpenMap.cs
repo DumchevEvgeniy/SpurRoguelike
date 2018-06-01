@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetMovementToExitOnOpenMap : BaseTargetWithSavesOrRecalculateRoute {
         private IComparer<IEnumerable<Location>> DefaultRouteComparer => new RouteComparerByTraps(gameMap);
         private IComparer<IEnumerable<Location>> CurrentRouteComparer => RouteComparer ?? DefaultRouteComparer;

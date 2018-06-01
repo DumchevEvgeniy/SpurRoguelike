@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal abstract class BaseTarget : IEnumerator<TurnInfo> {
         protected readonly GameMap gameMap;
         protected TurnInfo current;

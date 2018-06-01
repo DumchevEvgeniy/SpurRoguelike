@@ -1,7 +1,7 @@
 ﻿using System;
 using SpurRoguelike.Core.Views;
 
-namespace SpurRoguelike.PlayerBot.Extensions {
+namespace SpurRoguelike.WebPlayerBot.Extensions {
     internal static class PawnViewExtensions {
         private const Int32 BaseDamage = 10;
 

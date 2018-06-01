@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Extensions {
+namespace SpurRoguelike.WebPlayerBot.Extensions {
     internal static class GameMapExtensions {
         public static IEnumerable<Tuple<Location, MapCellType>> GetMapElementsAround(this GameMap gameMap, Location center, Int32 radius = 1) {
             var leftTopCorner = new Location(center.X - radius, center.Y - radius);

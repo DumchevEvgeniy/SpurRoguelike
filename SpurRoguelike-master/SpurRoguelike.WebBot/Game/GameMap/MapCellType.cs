@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal enum MapCellType : Byte {
         Hidden = 0,
         None = 1,

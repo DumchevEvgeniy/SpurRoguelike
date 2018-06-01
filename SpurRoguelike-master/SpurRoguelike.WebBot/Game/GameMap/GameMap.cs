@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.WebBot.Infractructure;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal sealed class GameMap {
         public const Int32 DamageByTrap = 50;
         public const Int32 DamageByHealthPack = -50;
@@ -23,7 +21,7 @@ namespace SpurRoguelike.PlayerBot.Game {
 
         public Int32 MaxPlayerHealth { get; private set; }
 
-        public GameMap(Int32 width, Int32 height, Int32 visibilityWidth, Int32 visibilityHeight, PlayerViewInfo player, Int32 maxPlayerHealth) {
+        public GameMap(Int32 width, Int32 height, Int32 visibilityWidth, Int32 visibilityHeight, PawnViewInfo player, Int32 maxPlayerHealth) {
             areaInfo = new VisibleAreaInfo() {
                 Player = player,
                 MapWidth = width,
@@ -34,7 +32,7 @@ namespace SpurRoguelike.PlayerBot.Game {
             this.MaxPlayerHealth = maxPlayerHealth;
             cells = new MapCellType[width, height];
         }
-        public GameMap(FieldView fieldView, PlayerViewInfo player, Int32 maxPlayerHealth)
+        public GameMap(FieldView fieldView, PawnViewInfo player, Int32 maxPlayerHealth)
             : this(fieldView.Width, fieldView.Height, fieldView.VisibilityWidth, fieldView.VisibilityHeight, player, maxPlayerHealth) {
         }
 
@@ -68,19 +66,19 @@ namespace SpurRoguelike.PlayerBot.Game {
 
         private void SetMapCellValuesByRow(Location leftBorder, Location rightBorder, Func<Location, MapCellType> func) {
             for(Int32 x = leftBorder.X; x <= rightBorder.X; x++) {
-                var location = new Location(x, leftBorder.Y);
+                var location = new Location { X = x, Y = leftBorder.Y };
                 this[location] = func(location);
             }
         }
         private void SetMapCellValuesByColumn(Location topBorder, Location bottomBorder, Func<Location, MapCellType> func) {
             for(Int32 y = topBorder.Y; y <= bottomBorder.Y; y++) {
-                var location = new Location(topBorder.X, y);
+                var location = new Location { X = topBorder.X, Y = y };
                 this[location] = func(location);
             }
         }
         private void SetMapCellValuesByRectangle(Location leftTopCorner, Location rightBottomCorner, Func<Location, MapCellType> func) {
             for(Int32 y = leftTopCorner.Y; y <= rightBottomCorner.Y; y++)
-                SetMapCellValuesByRow(new Location(leftTopCorner.X, y), new Location(rightBottomCorner.X, y), func);
+                SetMapCellValuesByRow(new Location { X = leftTopCorner.X, Y = y }, new Location { X = rightBottomCorner.X, Y = y }, func);
         }
 
         public IEnumerable<Tuple<Location, MapCellType>> GetElementsByRow(Location leftBorder, Location rightBorder) {
@@ -88,10 +86,10 @@ namespace SpurRoguelike.PlayerBot.Game {
                 yield break;
             if(leftBorder.X > rightBorder.X || leftBorder.X >= areaInfo.MapWidth || rightBorder.X < 0)
                 yield break;
-            var realLeftBorder = leftBorder.X < 0 ? new Location(0, leftBorder.Y) : leftBorder;
-            var realRightBorder = rightBorder.X >= areaInfo.MapWidth ? new Location(areaInfo.MapWidth - 1, rightBorder.Y) : rightBorder;
+            var realLeftBorder = leftBorder.X < 0 ? new Location { X = 0, Y = leftBorder.Y } : leftBorder;
+            var realRightBorder = rightBorder.X >= areaInfo.MapWidth ? new Location { X = areaInfo.MapWidth - 1, Y = rightBorder.Y } : rightBorder;
             for(Int32 x = realLeftBorder.X; x <= realRightBorder.X; x++) {
-                var location = new Location(x, realLeftBorder.Y);
+                var location = new Location { X = x, Y = realLeftBorder.Y };
                 yield return Tuple.Create(location, this[location]);
             }
         }
@@ -100,10 +98,10 @@ namespace SpurRoguelike.PlayerBot.Game {
                 yield break;
             if(topBorder.Y > bottomBorder.Y || topBorder.Y < 0 || bottomBorder.Y >= areaInfo.MapHeight)
                 yield break;
-            var realTopBorder = topBorder.Y < 0 ? new Location(topBorder.X, 0) : topBorder;
-            var realBottomBorder = bottomBorder.Y >= areaInfo.MapHeight ? new Location(bottomBorder.X, areaInfo.MapHeight - 1) : bottomBorder;
+            var realTopBorder = topBorder.Y < 0 ? new Location { X = topBorder.X, Y = 0 } : topBorder;
+            var realBottomBorder = bottomBorder.Y >= areaInfo.MapHeight ? new Location { X = bottomBorder.X, Y = areaInfo.MapHeight - 1 } : bottomBorder;
             for(Int32 y = realTopBorder.Y; y <= realBottomBorder.Y; y++) {
-                var location = new Location(realTopBorder.X, y);
+                var location = new Location { X = realTopBorder.X, Y = y };
                 yield return Tuple.Create(location, this[location]);
             }
         }
@@ -112,11 +110,11 @@ namespace SpurRoguelike.PlayerBot.Game {
                 yield break;
             if(leftTopCorner.X > rightBottomCorner.X || leftTopCorner.Y > rightBottomCorner.Y)
                 yield break;
-            var realLeftTopCorner = new Location(Math.Max(0, leftTopCorner.X), Math.Max(0, leftTopCorner.Y));
-            var realRightBottomCorner = new Location(Math.Min(areaInfo.MapWidth - 1, rightBottomCorner.X), Math.Min(areaInfo.MapHeight - 1, rightBottomCorner.Y));
+            var realLeftTopCorner = new Location { X = Math.Max(0, leftTopCorner.X), Y = Math.Max(0, leftTopCorner.Y) };
+            var realRightBottomCorner = new Location { X = Math.Min(areaInfo.MapWidth - 1, rightBottomCorner.X), Y = Math.Min(areaInfo.MapHeight - 1, rightBottomCorner.Y) };
             for(Int32 x = realLeftTopCorner.X; x <= realRightBottomCorner.X; x++) {
                 for(Int32 y = realLeftTopCorner.Y; y <= realRightBottomCorner.Y; y++) {
-                    var location = new Location(x, y);
+                    var location = new Location { X = x, Y = y };
                     yield return Tuple.Create(location, this[location]);
                 }
             }
@@ -128,7 +126,7 @@ namespace SpurRoguelike.PlayerBot.Game {
             for(Int32 y = 0; y < areaInfo.MapHeight; y++)
                 for(Int32 x = 0; x < areaInfo.MapWidth; x++)
                     if(this[x, y].OneFrom(mapCellTypes))
-                        yield return new Location(x, y);
+                        yield return new Location { X = x, Y = y };
         }
 
         private MapCellType SetMapCellType(Location location, LevelViewInfo levelViewInfo) {
@@ -137,9 +135,9 @@ namespace SpurRoguelike.PlayerBot.Game {
             return levelViewInfo.Field[location].ToMapCellType();
         }
 
-        public IEnumerable<PawnView> DetectedMonsters => monsterUpdater.DetectedElements;
-        public IEnumerable<ItemView> DetectedItems => itemsUpdater.DetectedElements;
-        public IEnumerable<HealthPackView> DetectedHealthPacks => healthPacksUpdater.DetectedElements;
+        public IEnumerable<PawnViewInfo> DetectedMonsters => monsterUpdater.DetectedElements;
+        public IEnumerable<ItemViewInfo> DetectedItems => itemsUpdater.DetectedElements;
+        public IEnumerable<HealthPackViewInfo> DetectedHealthPacks => healthPacksUpdater.DetectedElements;
         public IEnumerable<Location> DetectedTraps => trapsUpdater.ElementsLocations;
         public IEnumerable<Location> DetectedWalls => wallsUpdater.ElementsLocations;
         public IEnumerable<Location> DetectedLocationsOfExits => detectedLocationsOfExits;
@@ -213,36 +211,39 @@ namespace SpurRoguelike.PlayerBot.Game {
 
             protected override MapCellType ToMapCellType() => MapCellType.Trap;
         }
-        private class MapItemsUpdater : MapElementUpdater<ItemView> {
+        private class MapItemsUpdater : MapElementUpdater<ItemViewInfo> {
             public MapItemsUpdater() : base() { }
 
             protected override void RemoveDestroyedElements(GameMap gameMap) {
                 elementsLocations?.RemoveAll(location => gameMap.areaInfo.InTheVisibleArea(location));
                 detectedElements.RemoveAll(el => gameMap.areaInfo.InTheVisibleArea(el.Location));
             }
-            protected override Location ToLocation(ItemView element) => element.Location;
+            protected override Location ToLocation(ItemViewInfo element) => element.Location;
             protected override MapCellType ToMapCellType() => MapCellType.Item;
         }
-        private class MapHealthPacksUpdater : MapElementUpdater<HealthPackView> {
+        private class MapHealthPacksUpdater : MapElementUpdater<HealthPackViewInfo> {
             public MapHealthPacksUpdater() : base() { }
 
             protected override void RemoveDestroyedElements(GameMap gameMap) {
                 elementsLocations?.RemoveAll(location => gameMap.areaInfo.InTheVisibleArea(location));
                 detectedElements.RemoveAll(el => gameMap.areaInfo.InTheVisibleArea(el.Location));
             }
-            protected override Location ToLocation(HealthPackView element) => element.Location;
+            protected override Location ToLocation(HealthPackViewInfo element) => element.Location;
             protected override MapCellType ToMapCellType() => MapCellType.HealthPack;
         }
-        private class MapMonsterUpdater : MapElementUpdater<PawnView> {
+        private class MapMonsterUpdater : MapElementUpdater<PawnViewInfo> {
             public MapMonsterUpdater() : base() { }
 
-            protected override void RemoveDestroyedElements(GameMap gameMap) => detectedElements.RemoveAll(el => el.IsDestroyed);
-            protected override Location ToLocation(PawnView element) => element.Location;
+            protected override void RemoveDestroyedElements(GameMap gameMap) => detectedElements.RemoveAll(el => el == null);
+            protected override Location ToLocation(PawnViewInfo element) => element.Location;
             protected override MapCellType ToMapCellType() => MapCellType.Monster;
         }
 
+
+
+
         public struct VisibleAreaInfo {
-            public PlayerViewInfo Player { get; internal set; }
+            public PawnViewInfo Player { get; internal set; }
             public Int32 VisibilityWidth { get; internal set; }
             public Int32 VisibilityHeight { get; internal set; }
             public Int32 MapWidth { get; internal set; }
@@ -266,7 +267,7 @@ namespace SpurRoguelike.PlayerBot.Game {
             private Location ToLocationOnMap(Int32 x, Int32 y) {
                 var correctX = Math.Min(Math.Max(0, x), MapWidth - 1);
                 var correctY = Math.Min(Math.Max(0, y), MapHeight - 1);
-                return new Location(correctX, correctY);
+                return new Location { X = correctX, Y = correctY };
             }
         }
     }

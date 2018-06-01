@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
 internal static class MapCellTypeExtensions {
     public static Boolean OneFrom(this MapCellType element, params MapCellType[] elements) =>

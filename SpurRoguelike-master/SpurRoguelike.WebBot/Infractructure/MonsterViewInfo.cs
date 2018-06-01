@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace SpurRoguelike.WebBot.Infractructure {
-    public class MonsterViewInfo {
+namespace SpurRoguelike.WebPlayerBot.Infractructure {
+    public class PawnViewInfo {
         public String Name { get; set; }
-        public Int32 attack { get; set; }
-        public Int32 defence { get; set; }
-        public Int32 totalAttack { get; set; }
-        public Int32 totalDefence { get; set; }
-        public Int32 health { get; set; }
-        public Guid uniqueId { get; set; }
-        public Boolean isDestroyed { get; set; }
-        public LocationViewInfo location { get; set; }
+        public Int32 Attack { get; set; }
+        public Int32 Defence { get; set; }
+        public Int32 TotalAttack { get; set; }
+        public Int32 TotalDefence { get; set; }
+        public Int32 Health { get; set; }
+        public Guid UniqueId { get; set; }
+        public Boolean IsDestroyed { get; set; }
+        public Location Location { get; set; }
     }
 }

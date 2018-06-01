@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Game {
-    internal class MonsterComparer : IComparer<PawnView> {
-        private PawnView player;
+namespace SpurRoguelike.WebPlayerBot.Game {
+    internal class MonsterComparer : IComparer<PawnViewInfo> {
+        private PawnViewInfo player;
 
-        public MonsterComparer(PawnView player) {
+        public MonsterComparer(PawnViewInfo player) {
             this.player = player;
         }
 
-        public Int32 Compare(PawnView monster1, PawnView monster2) {
+        public Int32 Compare(PawnViewInfo monster1, PawnViewInfo monster2) {
             var damageToMonster1 = player.GetMaxDamageTo(monster1);
             var damageToMonster2 = player.GetMaxDamageTo(monster2);
             if(damageToMonster1 >= monster1.Health && damageToMonster2 >= monster2.Health)

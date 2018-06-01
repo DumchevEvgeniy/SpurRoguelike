@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetAttackTheEnemy : BaseTarget {
-        private IEnumerable<PawnView> allAroundMonsters;
+        private IEnumerable<PawnViewInfo> allAroundMonsters;
 
         public TargetAttackTheEnemy(GameMap gameMap) : base(gameMap) { }
 
@@ -43,7 +42,7 @@ namespace SpurRoguelike.PlayerBot.Targets {
                 .Select(info => gameMap.DetectedMonsters.First(m => m.Location == info.Item1));
             return allAroundMonster.Count() >= 4;
         }
-        private Boolean CanRunAfterStrike(PawnView targetMonster) {
+        private Boolean CanRunAfterStrike(PawnViewInfo targetMonster) {
             var nextDamage = allAroundMonsters.Where(m => (m.Location - targetMonster.Location).Size() == 1)
                 .Sum(monster => monster.GetMaxDamageTo(gameMap.AreaInfo.Player));
             return nextDamage * 0.8 < gameMap.AreaInfo.Player.Health * 0.75;
@@ -77,7 +76,7 @@ namespace SpurRoguelike.PlayerBot.Targets {
                 .Select(info => info.Item1);
         }
 
-        private PawnView GetTargetMonster() =>
+        private PawnViewInfo GetTargetMonster() =>
             allAroundMonsters.Aggregate((m1, m2) => new MonsterComparer(gameMap.AreaInfo.Player).Compare(m1, m2) <= 0 ? m1 : m2);
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
 using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal class DamageOnRouteCalculator {
         private readonly GameMap gameMap;
 

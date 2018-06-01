@@ -1,4 +1,4 @@
-﻿using SpurRoguelike.PlayerBot.Targets;
+﻿using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateTakeBestItemOnOpenMap : BaseState<TargetTakeBestItemOnOpenMap> {
     public StateTakeBestItemOnOpenMap(TargetTakeBestItemOnOpenMap target, PlayerGameInfo playerGameInfo)

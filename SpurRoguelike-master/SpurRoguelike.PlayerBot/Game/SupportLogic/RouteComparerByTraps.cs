@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal class RouteComparerByTraps : IComparer<IEnumerable<Location>> {
         private GameMap gameMap;
 

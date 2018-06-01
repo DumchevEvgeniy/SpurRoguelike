@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetOpenMap : BaseTargetWithSavesOrRecalculateRoute {
         private Boolean[,] reachabilityMap;
         private Location? lastTargetLocation;

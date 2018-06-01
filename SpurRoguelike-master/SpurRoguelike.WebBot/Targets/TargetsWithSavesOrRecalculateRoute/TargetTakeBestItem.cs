@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetTakeBestItem : BaseTargetWithSavesOrRecalculateRoute {
-        private IEnumerable<ItemView> bestItems;
-        private readonly IComparer<ItemView> defaultItemViewComparer = new ItemViewComparer();
-        private IComparer<ItemView> CurrentItemViewComparer => ItemViewComparer ?? defaultItemViewComparer;
+        private IEnumerable<ItemViewInfo> bestItems;
+        private readonly IComparer<ItemViewInfo> defaultItemViewComparer = new ItemViewComparer();
+        private IComparer<ItemViewInfo> CurrentItemViewComparer => ItemViewComparer ?? defaultItemViewComparer;
 
-        public IComparer<ItemView> ItemViewComparer { get; set; }
+        public IComparer<ItemViewInfo> ItemViewComparer { get; set; }
 
         public TargetTakeBestItem(GameMap gameMap) : base(gameMap) { }
 
@@ -41,8 +40,8 @@ namespace SpurRoguelike.PlayerBot.Targets {
             return null;
         }
 
-        private IEnumerable<ItemView> TryFoundBestItems() {
-            if(gameMap.AreaInfo.Player.TryGetEquippedItem(out ItemView equippedItem)) {
+        private IEnumerable<ItemViewInfo> TryFoundBestItems() {
+            if(gameMap.AreaInfo.Player.TryGetEquippedItem(out ItemViewInfo equippedItem)) {
                 var bestItems = gameMap.DetectedItems.Where(el => CurrentItemViewComparer.Compare(el, equippedItem) > 0);
                 if(bestItems.IsEmpty())
                     return null;

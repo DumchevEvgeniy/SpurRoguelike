@@ -1,9 +1,8 @@
 ﻿using System;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
-using SpurRoguelike.WebBot.Infractructure;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.WebBot {
+namespace SpurRoguelike.WebPlayerBot {
     public sealed class WebPlayerBot : IWebPlayerController {
         private GameMap gameMap;
         private TargetAnalizer targetAnalizer;

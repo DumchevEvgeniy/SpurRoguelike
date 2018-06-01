@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SpurRoguelike.WebBot.Infractructure;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.WebBot {
+namespace SpurRoguelike.WebPlayerBot {
     public class ApiSpurClient {
         private readonly String HostName = "http://e03078:666/";
         private readonly HttpClient httpClient;

@@ -1,6 +1,6 @@
 ﻿using System;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal class WeightCalculatorForShortestMovement : IWeightCalculator<Double> {
     public Double GetWeight(PonderableNode<Double> source, PonderableNode<Double> next, PonderableNode<Double> destination, GameMap map) =>

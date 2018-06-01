@@ -1,6 +1,6 @@
 ﻿using System;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Targets;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateMovementOnTheMonster : BaseState<TargetMovementOnTheMonster> {
     public StateMovementOnTheMonster(TargetMovementOnTheMonster target, PlayerGameInfo playerGameInfo)

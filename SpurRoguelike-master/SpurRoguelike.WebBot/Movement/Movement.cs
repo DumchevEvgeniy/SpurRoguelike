@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal class Movement<TWeight> : IMovement where TWeight : IComparable<TWeight> {
     private MovementEnumerable<TWeight> nodesOnTargetRoute;

@@ -1,5 +1,5 @@
-﻿using SpurRoguelike.PlayerBot.Game;
-using SpurRoguelike.PlayerBot.Targets;
+﻿using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class TargetAnalizer {
     private ITargetState<BaseTarget> currentState;

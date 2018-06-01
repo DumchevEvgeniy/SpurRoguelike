@@ -1,6 +1,6 @@
 ﻿using System;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
 
 internal class Node {
     public Location Location { get; private set; }

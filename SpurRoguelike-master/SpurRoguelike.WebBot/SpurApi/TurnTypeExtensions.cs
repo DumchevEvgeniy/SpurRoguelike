@@ -1,7 +1,7 @@
 ﻿using System;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.WebBot {
+namespace SpurRoguelike.WebPlayerBot {
     public static class TurnTypeExtensions {
         public static String ToApi(this TurnType turnType) {
             switch (turnType) {

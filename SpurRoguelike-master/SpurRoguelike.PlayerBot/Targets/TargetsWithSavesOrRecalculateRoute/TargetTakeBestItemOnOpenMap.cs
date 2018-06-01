@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetTakeBestItemOnOpenMap : BaseTargetWithSavesOrRecalculateRoute {
         private readonly IComparer<ItemView> defaultItemViewComparer = new ItemViewComparer();
         private IComparer<ItemView> CurrentItemViewComparer => ItemViewComparer ?? defaultItemViewComparer;

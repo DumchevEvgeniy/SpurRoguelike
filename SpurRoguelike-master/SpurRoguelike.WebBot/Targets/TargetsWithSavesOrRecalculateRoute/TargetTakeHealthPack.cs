@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetTakeHealthPack : BaseTargetMovementOnBestPositionWhenMonsters {
         public TargetTakeHealthPack(GameMap gameMap) : base(gameMap) { }
 
@@ -20,7 +19,7 @@ namespace SpurRoguelike.PlayerBot.Targets {
 
         protected override IEnumerable<Location> GetTargetLocations() => GetHealthPacks().Select(hp => hp.Location);
 
-        private IOrderedEnumerable<HealthPackView> GetHealthPacks() =>
+        private IOrderedEnumerable<HealthPackViewInfo> GetHealthPacks() =>
             gameMap.DetectedHealthPacks.OrderBy(m => (m.Location - gameMap.AreaInfo.Player.Location).Size());
 
         protected override IEnumerable<MapCellType> Barriers =>
@@ -47,8 +46,8 @@ namespace SpurRoguelike.PlayerBot.Targets {
             private Location GetAnalyzedLocation(Location next, GameMap gameMap) {
                 var offset = (gameMap.AreaInfo.Player.Location - next);
                 if(offset.XOffset == 0)
-                    return new Location(next.X, (next - offset).Y);
-                return new Location((next - offset).X, next.Y);
+                    return new Location { X = next.X, Y = (next - offset).Y };
+                return new Location { X = (next - offset).X, Y = next.Y };
             }
         }
     }

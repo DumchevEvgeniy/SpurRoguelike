@@ -1,6 +1,6 @@
 ﻿using System;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Targets;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateTakeBestItem : BaseState<TargetTakeBestItem> {
     public StateTakeBestItem(TargetTakeBestItem target, PlayerGameInfo playerGameInfo)

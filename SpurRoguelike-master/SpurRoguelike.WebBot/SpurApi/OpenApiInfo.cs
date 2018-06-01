@@ -1,5 +1,6 @@
 ﻿using System;
-namespace SpurRoguelike.WebBot {
+
+namespace SpurRoguelike.WebPlayerBot {
     public class OpenApiInfo {
         public const String None = "api/spur/none";
 

@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal class MovementEnumerable<T> : IEnumerable<PonderableNode<T>> where T : IComparable<T> {
     private MovementIterator<T> iterator;

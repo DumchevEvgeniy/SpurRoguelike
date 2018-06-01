@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetMovementOnTheMonster : BaseTargetMovementOnBestPositionWhenMonsters {
         public TargetMovementOnTheMonster(GameMap gameMap) : base(gameMap) { }
 
@@ -20,7 +19,7 @@ namespace SpurRoguelike.PlayerBot.Targets {
 
         protected override IEnumerable<Location> GetTargetLocations() => GetMonsters().Select(m => m.Location);
 
-        private IOrderedEnumerable<PawnView> GetMonsters() {
+        private IOrderedEnumerable<PawnViewInfo> GetMonsters() {
             var nearestMonster = gameMap.DetectedMonsters.Aggregate((m1, m2) =>
                 (m1.Location - gameMap.AreaInfo.Player.Location).Size() <= (m2.Location - gameMap.AreaInfo.Player.Location).Size() ? m1 : m2);
             return gameMap.DetectedMonsters

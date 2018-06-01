@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Extensions {
+namespace SpurRoguelike.WebPlayerBot.Extensions {
     internal static class LocationExtansions {
         public static IEnumerable<Quadrant> GetQuadrants(this Location centerLocation, Int32 offsetWidth, Int32 offsetHeight) {
             var quadrants = new List<Quadrant> {
             new Quadrant {
-                LeftTopCorner = new Location(centerLocation.X - offsetWidth, centerLocation.Y - offsetHeight),
+                LeftTopCorner = new Location { X = centerLocation.X - offsetWidth, Y = centerLocation.Y - offsetHeight },
                 RightBottomCorner = centerLocation
             },
             new Quadrant {
-                LeftTopCorner = new Location(centerLocation.X, centerLocation.Y - offsetHeight),
-                RightBottomCorner = new Location(centerLocation.X + offsetWidth, centerLocation.Y)
+                LeftTopCorner = new Location { X = centerLocation.X, Y = centerLocation.Y - offsetHeight },
+                RightBottomCorner = new Location { X = centerLocation.X + offsetWidth, Y = centerLocation.Y }
             },
             new Quadrant {
-                LeftTopCorner = new Location(centerLocation.X - offsetWidth, centerLocation.Y),
-                RightBottomCorner = new Location(centerLocation.X, centerLocation.Y + offsetHeight)
+                LeftTopCorner = new Location { X = centerLocation.X - offsetWidth, Y = centerLocation.Y },
+                RightBottomCorner = new Location { X = centerLocation.X, Y = centerLocation.Y + offsetHeight } 
             },
             new Quadrant {
                 LeftTopCorner = centerLocation,
-                RightBottomCorner = new Location(centerLocation.X + offsetWidth, centerLocation.Y + offsetHeight)
+                RightBottomCorner = new Location{ X = centerLocation.X + offsetWidth, Y = centerLocation.Y + offsetHeight } 
             },
         };
             return quadrants;

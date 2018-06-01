@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpurRoguelike.WebBot.Infractructure {
+namespace SpurRoguelike.WebPlayerBot.Infractructure {
     public class FieldViewInfo {
         public Int32 Width { get; set; }
         public Int32 Height { get; set; }

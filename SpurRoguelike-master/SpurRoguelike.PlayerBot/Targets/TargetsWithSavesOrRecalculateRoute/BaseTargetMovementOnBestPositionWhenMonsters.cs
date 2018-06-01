@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal abstract class BaseTargetMovementOnBestPositionWhenMonsters : BaseTargetWithSavesOrRecalculateRoute {
         protected BaseTargetMovementOnBestPositionWhenMonsters(GameMap gameMap) : base(gameMap) { }
 

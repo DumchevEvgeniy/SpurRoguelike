@@ -1,12 +1,12 @@
 ﻿using System;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal class Node {
     public Location Location { get; private set; }
 
     public Node(Int32 x, Int32 y) {
-        Location = new Location(x, y);
+        Location = new Location { X = x, Y = y };
     }
     public Node(Location location) : this(location.X, location.Y) { }
 
@@ -32,7 +32,5 @@ internal class Node {
             return false;
         return Location == cell.Location;
     }
-    public override Int32 GetHashCode() {
-        return Location.Y | Location.X;
-    }
+    public override Int32 GetHashCode() => Location.Y | Location.X;
 }

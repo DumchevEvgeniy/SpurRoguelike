@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpurRoguelike.Core.Primitives;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal class TargetRouteInfo {
         public Boolean NeedSave { get; private set; }
         public IEnumerable<Location> Route { get; private set; }

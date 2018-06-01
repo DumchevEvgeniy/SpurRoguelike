@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal sealed class RouteSeacher : IRoute {
     private Func<Location, GameMap, Boolean> predicate;
@@ -10,22 +10,22 @@ internal sealed class RouteSeacher : IRoute {
     public IEnumerable<MapCellType> Barriers { get; set; }
     public IEnumerable<MapCellType> DefaultBarriers { get; } = new List<MapCellType> { MapCellType.Hidden, MapCellType.Wall };
     private IEnumerable<MapCellType> GetBarriers() => Barriers ?? DefaultBarriers;
-    public Location? Destination { get; set; }
+    public Location Destination { get; set; }
 
     public void AddPredicateOnAvailability(Func<Location, GameMap, Boolean> predicate) => this.predicate += predicate;
     public void RemovePredicate(Func<Location, GameMap, Boolean> predicate) => this.predicate -= predicate;
 
     public IEnumerable<Location> GetDestinationNodesFormingRoutesWith(Location source, GameMap gameMap) {
-        var topLocation = new Location(source.X, source.Y + 1);
+        var topLocation = new Location { X = source.X, Y = source.Y + 1 };
         if(IsAvailable(topLocation, gameMap))
             yield return topLocation;
-        var bottomLocation = new Location(source.X, source.Y - 1);
+        var bottomLocation = new Location { X = source.X, Y = source.Y - 1 };
         if(IsAvailable(bottomLocation, gameMap))
             yield return bottomLocation;
-        var leftLocation = new Location(source.X - 1, source.Y);
+        var leftLocation = new Location { X = source.X - 1, Y = source.Y };
         if(IsAvailable(leftLocation, gameMap))
             yield return leftLocation;
-        var rightLocation = new Location(source.X + 1, source.Y);
+        var rightLocation = new Location { X = source.X + 1, Y = source.Y };
         if(IsAvailable(rightLocation, gameMap))
             yield return rightLocation;
     }
@@ -35,7 +35,7 @@ internal sealed class RouteSeacher : IRoute {
             return false;
         if(!IsAvailableByPredicate(location, gameMap))
             return false;
-        if(Destination != null && Destination.Value == location)
+        if(Destination != null && Destination.Equals(location))
             return true;
         if(gameMap[location].OneFrom(GetBarriers().ToArray()))
             return false;

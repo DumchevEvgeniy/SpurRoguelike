@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpurRoguelike.PlayerBot.Extensions {
+namespace SpurRoguelike.WebPlayerBot.Extensions {
     internal static class NumberExtensions {
         public static Int32 Abs(this Int32 number) => Math.Abs(number);
 

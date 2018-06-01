@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
 using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetTakeBestItem : BaseTargetWithSavesOrRecalculateRoute {
         private IEnumerable<ItemView> bestItems;
         private readonly IComparer<ItemView> defaultItemViewComparer = new ItemViewComparer();

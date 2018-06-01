@@ -1,11 +1,11 @@
 ﻿using System;
-using SpurRoguelike.Core.Views;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Extensions {
+namespace SpurRoguelike.WebPlayerBot.Extensions {
     internal static class PawnViewExtensions {
         private const Int32 BaseDamage = 10;
 
-        public static Int32 GetMaxDamageTo(this PawnView instigator, PawnView victim) =>
+        public static Int32 GetMaxDamageTo(this PawnViewInfo instigator, PawnViewInfo victim) =>
             (Int32)((instigator.TotalAttack / (Double)victim.TotalDefence * BaseDamage));
     }
 }

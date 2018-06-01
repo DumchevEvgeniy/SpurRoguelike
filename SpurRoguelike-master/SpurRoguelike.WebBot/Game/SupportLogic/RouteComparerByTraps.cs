@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal class RouteComparerByTraps : IComparer<IEnumerable<Location>> {
         private GameMap gameMap;
 
@@ -23,5 +23,4 @@ namespace SpurRoguelike.PlayerBot.Game {
 
         private Int32 GetNumberOfTraps(IEnumerable<Location> locations) => locations.Count(loc => gameMap[loc] == MapCellType.Trap);
     }
-
 }

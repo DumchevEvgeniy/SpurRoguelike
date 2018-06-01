@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Targets {
+namespace SpurRoguelike.WebPlayerBot.Targets {
     internal sealed class TargetOpenMap : BaseTargetWithSavesOrRecalculateRoute {
         private Boolean[,] reachabilityMap;
-        private Location? lastTargetLocation;
+        private Location lastTargetLocation;
 
         public Boolean IsMaxOpen { get; private set; } = false;
 
@@ -17,11 +17,11 @@ namespace SpurRoguelike.PlayerBot.Targets {
         public override Boolean IsAvailable() => !IsMaxOpen;
 
         protected override TargetRouteInfo TryGetRoute() {
-            if(lastTargetLocation != null && gameMap[lastTargetLocation.Value] == MapCellType.Hidden) {
-                var safeMovement = CreateSafeMovement().GetRoute(gameMap.AreaInfo.Player.Location, lastTargetLocation.Value);
+            if(lastTargetLocation != null && gameMap[lastTargetLocation] == MapCellType.Hidden) {
+                var safeMovement = CreateSafeMovement().GetRoute(gameMap.AreaInfo.Player.Location, lastTargetLocation);
                 if(safeMovement != null)
                     return new TargetRouteInfo(safeMovement, true);
-                var unsafeMovement = CreateUnsafeMovement().GetRoute(gameMap.AreaInfo.Player.Location, lastTargetLocation.Value);
+                var unsafeMovement = CreateUnsafeMovement().GetRoute(gameMap.AreaInfo.Player.Location, lastTargetLocation);
                 if(unsafeMovement != null)
                     return new TargetRouteInfo(unsafeMovement, true);
             }
@@ -73,7 +73,7 @@ namespace SpurRoguelike.PlayerBot.Targets {
             return moreSafelyRoute;
         }
         private IEnumerable<Location> GetOptimalRouteMapOpening(IEnumerable<Location> bordersHiddenCells) {
-            var startPosition = lastTargetLocation != null && lastTargetLocation.HasValue ? lastTargetLocation.Value : gameMap.AreaInfo.Player.Location;
+            var startPosition = lastTargetLocation != null ? lastTargetLocation : gameMap.AreaInfo.Player.Location;
             var bordersHiddenCellsList = bordersHiddenCells.ToList();
             while(bordersHiddenCellsList.Count != 0) {
                 var nextLocation = bordersHiddenCellsList.Aggregate((loc1, loc2) =>
@@ -93,10 +93,10 @@ namespace SpurRoguelike.PlayerBot.Targets {
                 var tempLocationList = new List<Location>();
                 foreach(var location in unattainableLocations) {
                     var items = new List<Location> {
-                    new Location(location.X, location.Y - 1),
-                    new Location(location.X - 1, location.Y),
-                    new Location(location.X + 1, location.Y),
-                    new Location(location.X, location.Y + 1)
+                    new Location { X = location.X, Y = location.Y - 1 },
+                    new Location { X = location.X - 1, Y = location.Y },
+                    new Location { X = location.X + 1, Y = location.Y },
+                    new Location { X = location.X, Y = location.Y + 1 }
                 }.Where(loc => !reachabilityMap[loc.X, loc.Y] && !gameMap[loc].OneFrom(MapCellType.Exit, MapCellType.Hidden, MapCellType.Wall));
 
                     foreach(var item in items) {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpurRoguelike.Core.Primitives;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal class RelatedNode : Node {
     public Node PreviousNode { get; set; }

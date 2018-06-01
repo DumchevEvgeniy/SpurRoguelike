@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
 using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal sealed class GameMap {
         public const Int32 DamageByTrap = 50;
         public const Int32 DamageByHealthPack = -50;

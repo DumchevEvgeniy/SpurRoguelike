@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SpurRoguelike.Core.Primitives;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal struct Quadrant {
         public Location LeftTopCorner { get; set; }
         public Location RightBottomCorner { get; set; }

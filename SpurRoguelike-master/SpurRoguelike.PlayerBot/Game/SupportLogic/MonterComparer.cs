@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal class MonsterComparer : IComparer<PawnView> {
         private PawnView player;
 

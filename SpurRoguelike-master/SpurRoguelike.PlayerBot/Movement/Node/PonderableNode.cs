@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
 internal class PonderableNode<TWeight> : RelatedNode, IComparable<TWeight>, IComparable<PonderableNode<TWeight>> where TWeight : IComparable<TWeight> {
     private IWeightCalculator<TWeight> weightCalculator;

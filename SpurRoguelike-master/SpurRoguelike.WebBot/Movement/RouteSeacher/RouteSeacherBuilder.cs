@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal sealed class RouteSeacherBuilder {
     public List<Location> FoundHiddenLocation { get; } = new List<Location>();

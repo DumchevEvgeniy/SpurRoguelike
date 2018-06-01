@@ -1,6 +1,6 @@
 ﻿using System;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
 internal class WeightCalculatorWithoutSelectionOfElements : IWeightCalculator<Int32> {
     public Int32 GetWeight(PonderableNode<Int32> source, PonderableNode<Int32> next, PonderableNode<Int32> destination, GameMap map) =>

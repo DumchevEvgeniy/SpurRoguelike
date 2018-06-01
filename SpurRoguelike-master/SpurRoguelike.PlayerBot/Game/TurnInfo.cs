@@ -1,8 +1,8 @@
 ﻿using System;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal class TurnInfo {
         public Turn Turn { get; private set; }
         public TurnType TurnType { get; private set; }

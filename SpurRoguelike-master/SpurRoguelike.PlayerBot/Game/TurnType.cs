@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal enum TurnType : Byte {
         None = 0,
 

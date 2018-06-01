@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace SpurRoguelike.WebBot {
+namespace SpurRoguelike.WebPlayerBot {
     class Program {
         static void Main(string[] args) {
             var gameExecutor = new GameExecutor(new WebPlayerBot());

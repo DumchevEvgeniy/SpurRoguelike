@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.PlayerBot.Game;
+using SpurRoguelike.WebPlayerBot.Game;
 
 internal sealed class RouteSeacher : IRoute {
     private Func<Location, GameMap, Boolean> predicate;

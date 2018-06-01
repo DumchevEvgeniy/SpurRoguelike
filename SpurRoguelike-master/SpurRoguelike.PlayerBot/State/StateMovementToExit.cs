@@ -1,4 +1,4 @@
-﻿using SpurRoguelike.PlayerBot.Targets;
+﻿using SpurRoguelike.WebPlayerBot.Targets;
 
 internal sealed class StateMovementToExit : BaseState<TargetMovementToExit> {
     public StateMovementToExit(TargetMovementToExit target, PlayerGameInfo playerGameInfo)

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using SpurRoguelike.WebBot.Infractructure;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.WebBot {
+namespace SpurRoguelike.WebPlayerBot {
     public class GameExecutor {
         private readonly ApiSpurClient spurClient = new ApiSpurClient();
         private readonly IWebPlayerController webPlayerController;

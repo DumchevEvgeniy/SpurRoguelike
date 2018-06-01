@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
-using SpurRoguelike.PlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Extensions;
+using SpurRoguelike.WebPlayerBot.Infractructure;
 
-namespace SpurRoguelike.PlayerBot.Game {
+namespace SpurRoguelike.WebPlayerBot.Game {
     internal class DamageOnRouteCalculator {
         private readonly GameMap gameMap;
 
@@ -41,7 +40,7 @@ namespace SpurRoguelike.PlayerBot.Game {
             return sumDamage;
         }
 
-        private Int32 GetMonsterDamage(PawnView monster, List<Location> routeList) {
+        private Int32 GetMonsterDamage(PawnViewInfo monster, List<Location> routeList) {
             var monsterRouteCalculator = new ShortestMonsterRouteCalculator(gameMap);
             Int32 counterPlayerSteps = 0;
             for(Int32 index = 0; index < routeList.Count - 1; index++) {

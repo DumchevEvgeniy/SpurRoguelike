@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpurRoguelike.WebBot.Infractructure {
+namespace SpurRoguelike.WebPlayerBot.Infractructure {
     public class Field {
     }
 }
