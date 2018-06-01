@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{88B3EF33-8FD2-4F50-B7C2-A08CCD43096A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SpurRoguelike.WebBot</RootNamespace>
+    <AssemblyName>SpurRoguelike.WebBot</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SpurApi\ApiSpurClient.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\GameMapExtensions.cs" />
+    <Compile Include="Extensions\LocationExtansions.cs" />
+    <Compile Include="Extensions\MapCellTypeExtensions.cs" />
+    <Compile Include="Extensions\NumberExtensions.cs" />
+    <Compile Include="Extensions\PawnViewExtensions.cs" />
+    <Compile Include="Game\GameMap\GameMap.cs" />
+    <Compile Include="Game\GameMap\MapCellType.cs" />
+    <Compile Include="Game\SupportLogic\DamageOnRouteCalculator.cs" />
+    <Compile Include="Game\SupportLogic\ItemViewComparer.cs" />
+    <Compile Include="Game\SupportLogic\MonterComparer.cs" />
+    <Compile Include="Game\SupportLogic\Quadrant.cs" />
+    <Compile Include="Game\SupportLogic\RouteComparerByTraps.cs" />
+    <Compile Include="Game\TurnInfo.cs" />
+    <Compile Include="Game\TurnType.cs" />
+    <Compile Include="Infractructure\Field.cs" />
+    <Compile Include="Infractructure\HealthPack.cs" />
+    <Compile Include="Infractructure\Item.cs" />
+    <Compile Include="Infractructure\LevelData.cs" />
+    <Compile Include="Infractructure\LevelViewInfo.cs" />
+    <Compile Include="Infractructure\Location.cs" />
+    <Compile Include="Infractructure\Monster.cs" />
+    <Compile Include="Infractructure\Player.cs" />
+    <Compile Include="WebPlayerBot\IWebPlayerController.cs" />
+    <Compile Include="Movement\IMovement.cs" />
+    <Compile Include="Movement\Movement.cs" />
+    <Compile Include="Movement\MovementEnumerable.cs" />
+    <Compile Include="Movement\Node\Node.cs" />
+    <Compile Include="Movement\Node\PonderableNode.cs" />
+    <Compile Include="Movement\Node\RelatedNode.cs" />
+    <Compile Include="Movement\RouteSeacher\IRoute.cs" />
+    <Compile Include="Movement\RouteSeacher\RouteSeacher.cs" />
+    <Compile Include="Movement\RouteSeacher\RouteSeacherBuilder.cs" />
+    <Compile Include="Movement\WeightCalculator\IWeightCalculator.cs" />
+    <Compile Include="Movement\WeightCalculator\WeightCalculatorForShortestMovement.cs" />
+    <Compile Include="Movement\WeightCalculator\WeightCalculatorWithoutSelectionOfElements.cs" />
+    <Compile Include="SpurApi\OpenApiInfo.cs" />
+    <Compile Include="SpurApi\GameExecutor.cs" />
+    <Compile Include="SpurApi\TurnTypeExtensions.cs" />
+    <Compile Include="WebPlayerBot\WebPlayerBot.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\BaseState.cs" />
+    <Compile Include="State\ITargetState.cs" />
+    <Compile Include="State\PlayerGameInfo.cs" />
+    <Compile Include="State\StateAttackTheEnemy.cs" />
+    <Compile Include="State\StateMovementOnPosition.cs" />
+    <Compile Include="State\StateMovementOnTheMonster.cs" />
+    <Compile Include="State\StateMovementToExit.cs" />
+    <Compile Include="State\StateMovementToExitOnOpenMap.cs" />
+    <Compile Include="State\StateOpenMap.cs" />
+    <Compile Include="State\StateTakeBestItem.cs" />
+    <Compile Include="State\StateTakeBestItemOnOpenMap.cs" />
+    <Compile Include="State\StateTakeHealthPack.cs" />
+    <Compile Include="Targets\BaseTarget.cs" />
+    <Compile Include="Targets\TargetAnalizer.cs" />
+    <Compile Include="Targets\TargetAttackTheEnemy.cs" />
+    <Compile Include="Targets\TargetsWithRecalculateRoute\BaseTargetWithRecalculatedRoute.cs" />
+    <Compile Include="Targets\TargetsWithRecalculateRoute\TargetMovementOnPosition.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\BaseTargetMovementOnBestPositionWhenMonsters.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\BaseTargetSavesOrRecalculatedRoute.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetMovementOnTheMonster.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetMovementToExit.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetMovementToExitOnOpenMap.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetOpenMap.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetRouteInfo.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetTakeBestItem.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetTakeBestItemOnOpenMap.cs" />
+    <Compile Include="Targets\TargetsWithSavesOrRecalculateRoute\TargetTakeHealthPack.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpurRoguelike.Core\SpurRoguelike.Core.csproj">
+      <Project>{a9981d1c-3429-4729-b7f7-7839cc30be00}</Project>
+      <Name>SpurRoguelike.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpurRoguelike\SpurRoguelike.csproj">
+      <Project>{1d6a7a82-0a7f-4462-9d60-98fb65db5391}</Project>
+      <Name>SpurRoguelike</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
